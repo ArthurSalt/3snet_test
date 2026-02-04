@@ -1,6 +1,5 @@
-import type { RenderTabProps } from "../../../types/types";
-import { ChevronIcon } from "../icons";
-
+import type { RenderTabProps } from '../../../types/types';
+import { ChevronIcon } from '../icons';
 
 export const NavTab = ({ label, isActive }: RenderTabProps) => (
   <>
@@ -12,4 +11,4 @@ export const NavTab = ({ label, isActive }: RenderTabProps) => (
       </>
     )}
   </>
-)
+);

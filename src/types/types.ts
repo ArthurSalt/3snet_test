@@ -19,7 +19,7 @@ export type MonthData = {
     income: number;
     activePartners: number;
   };
-}
+};
 
 export type TotalMonthData = {
   fact: {
@@ -30,7 +30,7 @@ export type TotalMonthData = {
     income: number;
     activePartners: number;
   };
-}
+};
 
 export type Admin = {
   id: number;
@@ -38,9 +38,9 @@ export type Admin = {
   adminName: string;
   year: number;
   months: MonthData[];
-}
+};
 
 export type TableData = {
   total: TotalMonthData[];
   table: Admin[];
-}
+};

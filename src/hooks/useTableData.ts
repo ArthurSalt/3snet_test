@@ -1,24 +1,30 @@
-import { useState, useEffect } from "react";
-import type { TableData } from "../types";
+import { useState, useEffect } from 'react';
+import type { TableData } from '../types';
 
-const URL = "https://3snet.co/js_test/api.json";
+const URL = 'https://3snet.co/js_test/api.json';
 
 export const useTableData = () => {
   const [data, setData] = useState<TableData | null>(null);
-  const [loading, setLoading] = useState<boolean>(false);
-  const [error, setError] = useState<boolean>(false);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
 
   useEffect(() => {
+    const controller = new AbortController();
+
     const fetchData = async () => {
-      setLoading(true);
       try {
-        const response = await fetch(URL);
+        const response = await fetch(URL, { signal: controller.signal });
+
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
+
         const result = await response.json();
         setData(result.data);
-      } catch {
+      } catch (err) {
+        if (controller.signal.aborted) return;
+
+        console.error('[API] Ошибка загрузки данных:', err);
         setError(true);
       } finally {
         setLoading(false);
@@ -26,7 +32,11 @@ export const useTableData = () => {
     };
 
     fetchData();
+
+    return () => {
+      controller.abort();
+    };
   }, []);
 
-  return { data, loading, error}
+  return { data, loading, error };
 };

@@ -1,6 +1,6 @@
-import React, { Fragment } from "react";
-import { TableCell } from "./TableCell";
-import type { TotalMonthData } from "../../../types";
+import React, { Fragment } from 'react';
+import { TableCell } from './TableCell';
+import type { TotalMonthData } from '../../../types';
 
 type TotalRowsProps = {
   months: number[];
@@ -32,21 +32,17 @@ export const TotalRows = ({ months, data }: TotalRowsProps) => (
               value="No data"
               className="border border-gray-300 px-4 py-3 text-center text-gray-400 text-sm"
             />
-          )
+          );
         }
 
         return (
           <Fragment key={m}>
             <TableCell value={month.plan.income} isPrice />
-            <TableCell
-              value={month.fact.income}
-              isPrice
-              className="border-r border-gray-300"
-            />
+            <TableCell value={month.fact.income} isPrice className="border-r border-gray-300" />
           </Fragment>
         );
       })}
-      <td rowSpan={2} className="w-[40px] border-b border-gray-300"/>
+      <td rowSpan={2} className="w-[40px] border-b border-gray-300" />
     </tr>
 
     <tr className="text-[#A6B1B9] font-semibold text-left font-['Roboto'] text-sm">
@@ -60,7 +56,7 @@ export const TotalRows = ({ months, data }: TotalRowsProps) => (
         return (
           <React.Fragment key={m}>
             <TableCell value={month.plan.activePartners} />
-            <TableCell value={month.fact.activePartners} className='border-r border-gray-300' />
+            <TableCell value={month.fact.activePartners} className="border-r border-gray-300" />
           </React.Fragment>
         );
       })}

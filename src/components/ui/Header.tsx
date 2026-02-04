@@ -1,5 +1,5 @@
-import { memo } from "react"
-import { ChevronIcon, BellIcon } from "./icons"
+import { memo } from 'react';
+import { ChevronIcon, BellIcon } from './icons';
 
 export const Header = memo(() => {
   return (
@@ -13,17 +13,15 @@ export const Header = memo(() => {
           <span className="mx-2 h-[34px] w-px bg-[#4F669D]" />
 
           <span className="text-[11px] leading-[13px] text-[#4F669D]">
-            CPA<br />NETWORK
+            CPA
+            <br />
+            NETWORK
           </span>
         </div>
 
         <nav className="flex gap-10">
-          <span className="text-[18px] font-medium tracking-[0.01em]">
-            PAYMENT SYSTEMS
-          </span>
-          <span className="text-[18px] font-medium tracking-[0.01em] uppercase">
-            REFERRALS
-          </span>
+          <span className="text-[18px] font-medium tracking-[0.01em]">PAYMENT SYSTEMS</span>
+          <span className="text-[18px] font-medium tracking-[0.01em] uppercase">REFERRALS</span>
         </nav>
       </div>
 
@@ -39,9 +37,7 @@ export const Header = memo(() => {
         </div>
 
         <div className="flex items-center gap-2 ml-8 cursor-pointer">
-          <span className="text-[18px] font-medium mr-2">
-            profile@mail.ru
-          </span>
+          <span className="text-[18px] font-medium mr-2">profile@mail.ru</span>
           <ChevronIcon />
         </div>
 
@@ -52,5 +48,5 @@ export const Header = memo(() => {
         </div>
       </div>
     </header>
-  )
-})
+  );
+});
