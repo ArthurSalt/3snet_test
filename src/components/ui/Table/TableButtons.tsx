@@ -2,14 +2,15 @@ import { memo } from "react";
 import { ChevronIcon } from "../icons";
 
 type TableButtonsType = {
+  year?: number;
   handlePrev: () => void;
   handleNext: () => void;
 }
 
-export const TableButtons = memo(({ handlePrev, handleNext }: TableButtonsType) => (
+export const TableButtons = memo(({ year, handlePrev, handleNext }: TableButtonsType) => (
   <div className="flex items-center my-8">
     <button className="border border-[#D6E3EC] rounded-lg px-4 py-2 text-[#4F669D] font-medium flex items-center gap-2">
-      Year 2025
+      Year {year}
       <ChevronIcon />
     </button>
     <div className='flex-1' />

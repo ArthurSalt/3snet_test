@@ -1,9 +1,11 @@
-import { useCallback, useMemo, useState } from 'react';
+import { useCallback, useMemo, useState } from "react";
 
 const MONTHS_COUNT = 6;
 
 export const useVisibleMonths = () => {
-  const [startMonth, setStartMonth] = useState(0);
+  const currentMonth = new Date().getMonth()
+  
+  const [startMonth, setStartMonth] = useState(currentMonth);
 
   const months = useMemo(
     () =>

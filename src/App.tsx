@@ -7,8 +7,10 @@ import { Header } from './components';
 import { TABLE_TABS, NAV_TABS } from './constants';
 import { Table } from './components';
 import { useVisibleMonths } from './hooks/useVisibleMonths';
+import { useTableData } from './hooks';
 
 function App() {
+  const { data, loading, error } = useTableData()
   const { months, handlePrev, handleNext } = useVisibleMonths();
 
   return (
@@ -32,8 +34,9 @@ function App() {
           renderTab={TableTab}
         />
 
-        <TableButtons handlePrev={handlePrev} handleNext={handleNext} />
-        <Table visibleMonths={months} />
+        <TableButtons handlePrev={handlePrev} handleNext={handleNext} year={data?.table[0].year} />
+
+        <Table visibleMonths={months} data={data} error={error} loading={loading} />
       </div>
     </div>
   );

@@ -1,61 +1,33 @@
-import React from 'react'
-
-import { useTableData } from '../../../hooks'
 import { TotalRows } from './TotalRows'
 import { AdminRows } from './AdminRows'
-import { MONTHS } from '../../../constants';
+
+import { TableHead } from './TableHead';
+import type { TableData } from '../../../types';
 
 type TableProps = {
   visibleMonths: number[]
+  data: TableData | null
+  error: boolean
+  loading: boolean
 };
 
-export const Table = ({ visibleMonths }: TableProps) => {
-  const { data, loading, error } = useTableData()
-
-  if (loading) {
-    return <div>Loading...</div>;
+export const Table = ({ visibleMonths, data, loading, error }: TableProps) => {
+  if (error) {
+    return (
+      <p>Error loading data...</p>
+    )
   }
 
-  if (error || !data) {
-    return <div>Error loading data.</div>;
+  if (loading || !data) {
+    return (
+      <p>Loading data...</p>
+    )
   }
 
   return (
     <div className="w-full">
       <table className="min-w-full border-collapse border border-gray-300">
-        <thead>
-          <tr className="bg-blue-50 text-[#A6B1B9] font-semibold text-left font-['Roboto'] text-sm">
-            <th
-              rowSpan={2}
-              className="border border-gray-300 px-1 py-3 w-[120px]"
-            ></th>
-            <th
-              rowSpan={2}
-              className="border border-gray-300 px-1 py-3 w-[120px]"
-            ></th>
-            {visibleMonths.map((monthId) => (
-              <th
-                key={monthId}
-                colSpan={2}
-                className="border border-gray-300 border-b-transparent px-4 py-1"
-              >
-                {MONTHS[monthId]}
-              </th>
-            ))}
-          </tr>
-          <tr className="bg-blue-50 text-[#A6B1B9] font-semibold text-left font-['Roboto'] text-sm">
-            {visibleMonths.map((monthId) => (
-              <React.Fragment key={monthId}>
-                <th className="border border-gray-300 border-r-transparent px-4 py-2 font-medium text-left">
-                  Plan:
-                </th>
-                <th className="border border-gray-300 border-l-transparent px-4 py-2 font-medium text-left">
-                  Fact:
-                </th>
-              </React.Fragment>
-            ))}
-          </tr>
-        </thead>
+        <TableHead visibleMonths={visibleMonths} />
 
         <tbody>
           <TotalRows

@@ -38,6 +38,7 @@ export const AdminRows = ({ admin, months }: AdminRowsProps) => (
           </Fragment>
         );
       })}
+      <td rowSpan={2} className="w-[40px] border-b border-gray-300 text-center" >...</td>
     </tr>
 
     <tr className="text-[#A6B1B9] font-semibold text-left font-['Roboto'] text-sm">

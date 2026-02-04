@@ -46,6 +46,7 @@ export const TotalRows = ({ months, data }: TotalRowsProps) => (
           </Fragment>
         );
       })}
+      <td rowSpan={2} className="w-[40px] border-b border-gray-300"/>
     </tr>
 
     <tr className="text-[#A6B1B9] font-semibold text-left font-['Roboto'] text-sm">
